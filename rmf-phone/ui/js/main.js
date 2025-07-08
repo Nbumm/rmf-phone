@@ -37,8 +37,10 @@ class RMFPhone {
         this.startTimeUpdater();
         this.requestPhoneData();
         
-        // Initialize with lock screen
-        this.showScreen('lock-screen');
+        // Initialize with lock screen after a small delay to ensure DOM is ready
+        setTimeout(() => {
+            this.showScreen('lock-screen');
+        }, 100);
     }
 
     setupEventListeners() {
@@ -62,17 +64,30 @@ class RMFPhone {
         });
 
         // Navigation buttons
-        document.getElementById('back-nav').addEventListener('click', () => {
-            this.goBack();
-        });
+        const backNav = document.getElementById('back-nav');
+        const homeNav = document.getElementById('home-nav');
+        const recentNav = document.getElementById('recent-nav');
 
-        document.getElementById('home-nav').addEventListener('click', () => {
-            this.goHome();
-        });
+        if (backNav) {
+            backNav.addEventListener('click', () => {
+                console.log('Back button clicked'); // Debug log
+                this.goBack();
+            });
+        }
 
-        document.getElementById('recent-nav').addEventListener('click', () => {
-            this.showRecentApps();
-        });
+        if (homeNav) {
+            homeNav.addEventListener('click', () => {
+                console.log('Home button clicked'); // Debug log
+                this.goHome();
+            });
+        }
+
+        if (recentNav) {
+            recentNav.addEventListener('click', () => {
+                console.log('Recent button clicked'); // Debug log
+                this.showRecentApps();
+            });
+        }
 
         // App back button
         document.getElementById('back-button').addEventListener('click', () => {
@@ -156,19 +171,28 @@ class RMFPhone {
 
     // Screen Management
     showScreen(screenId) {
+        console.log('Switching to screen:', screenId); // Debug log
+        
+        // Hide all screens
         document.querySelectorAll('.screen').forEach(screen => {
             screen.classList.remove('active');
+            screen.style.display = 'none';
         });
         
         const targetScreen = document.getElementById(screenId);
         if (targetScreen) {
+            targetScreen.style.display = 'block';
             targetScreen.classList.add('active');
             this.currentScreen = screenId;
+            console.log('Successfully switched to:', screenId); // Debug log
+        } else {
+            console.error('Screen not found:', screenId); // Debug log
         }
     }
 
     unlockPhone() {
-        if (this.phoneData.pinCode && this.phoneData.pinCode !== '') {
+        console.log('Unlock phone called, PIN code:', this.phoneData.pinCode);
+        if (this.phoneData.pinCode && this.phoneData.pinCode !== '' && this.phoneData.pinCode !== null) {
             this.showScreen('pin-screen');
         } else {
             this.isLocked = false;
@@ -372,23 +396,34 @@ class RMFPhone {
 
     // Navigation
     goBack() {
+        console.log('goBack called - current screen:', this.currentScreen, 'current app:', this.currentApp, 'is locked:', this.isLocked);
+        
         if (this.currentApp) {
             this.closeApp();
+        } else if (this.currentScreen === 'pin-screen') {
+            this.showScreen('lock-screen');
         } else if (this.currentScreen !== 'home-screen' && !this.isLocked) {
             this.showScreen('home-screen');
+        } else if (this.isLocked && this.currentScreen !== 'lock-screen') {
+            this.showScreen('lock-screen');
         }
     }
 
     goHome() {
-        if (!this.isLocked) {
+        console.log('goHome called - is locked:', this.isLocked);
+        
+        if (this.isLocked) {
+            this.showScreen('lock-screen');
+        } else {
             this.showScreen('home-screen');
             this.currentApp = null;
         }
     }
 
     showRecentApps() {
-        // TODO: Implement recent apps screen
         console.log('Recent apps not implemented yet');
+        // For now, just go to home screen
+        this.goHome();
     }
 
     // Call Management
@@ -426,10 +461,11 @@ class RMFPhone {
     declineCall() {
         if (this.activeCall) {
             this.stopRingtone();
+            const callId = this.activeCall.id;
             this.activeCall = null;
             this.showScreen(this.isLocked ? 'lock-screen' : 'home-screen');
             
-            this.sendMessage('phone:declineCall', { callId: this.activeCall?.id });
+            this.sendMessage('phone:declineCall', { callId: callId });
         }
     }
 
@@ -628,12 +664,15 @@ class RMFPhone {
     }
 
     sendMessage(action, data = {}) {
-        fetch(`https://${GetParentResourceName()}/${action}`, {
+        const resourceName = window.GetParentResourceName ? GetParentResourceName() : 'rmf-phone';
+        fetch(`https://${resourceName}/${action}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(data)
+        }).catch(error => {
+            console.error('Error sending message:', error);
         });
     }
 
@@ -641,6 +680,7 @@ class RMFPhone {
         switch (data.action) {
             case 'show':
                 document.body.style.display = 'block';
+                this.resetPhoneState();
                 break;
             case 'hide':
                 document.body.style.display = 'none';
@@ -664,6 +704,21 @@ class RMFPhone {
                 this.phoneData.battery = data.battery;
                 this.updateStatusBar();
                 break;
+        }
+    }
+
+    resetPhoneState() {
+        console.log('Resetting phone state, PIN code:', this.phoneData.pinCode, 'Is locked:', this.isLocked);
+        this.currentApp = null;
+        this.activeCall = null;
+        
+        // Always start with lock screen, then determine if unlock is needed
+        if (this.phoneData.pinCode && this.phoneData.pinCode !== '' && this.phoneData.pinCode !== null) {
+            this.isLocked = true;
+            this.showScreen('lock-screen');
+        } else {
+            this.isLocked = false;
+            this.showScreen('home-screen');
         }
     }
 
@@ -747,12 +802,27 @@ class RMFPhone {
 
 // Initialize phone when page loads
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM Content Loaded - Initializing RMF Phone');
     window.phone = new RMFPhone();
+    
+    // Initial debug info
+    console.log('All screens:', document.querySelectorAll('.screen'));
+    console.log('Navigation buttons:', {
+        back: document.getElementById('back-nav'),
+        home: document.getElementById('home-nav'),
+        recent: document.getElementById('recent-nav')
+    });
 });
 
 // Close phone when clicking outside (for development)
 document.addEventListener('click', (e) => {
-    if (e.target === document.body) {
-        window.phone?.sendMessage('phone:close');
+    if (e.target === document.body && window.phone) {
+        console.log('Clicking outside phone - closing');
+        if (window.GetParentResourceName) {
+            window.phone.sendMessage('phone:close');
+        } else {
+            // Development mode - just hide
+            document.body.style.display = 'none';
+        }
     }
 });

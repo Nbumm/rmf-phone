@@ -3,6 +3,7 @@ local RMFPhone = {}
 local isPhoneOpen = false
 local isPhoneDisabled = false
 local phoneObject = nil
+local currentApp = nil
 local phoneAnimation = {
     dict = "cellphone@",
     name = "cellphone_text_read_base"
@@ -401,7 +402,7 @@ RegisterNUICallback('phone:answerCall', function(data, cb)
 end)
 
 RegisterNUICallback('phone:declineCall', function(data, cb)
-    DeclineCall()
+    EndCall()
     cb('ok')
 end)
 

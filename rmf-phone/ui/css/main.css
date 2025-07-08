@@ -58,6 +58,10 @@ body {
     overflow: hidden;
 }
 
+body[style*="display: none"] {
+    display: none !important;
+}
+
 /* Phone Container */
 #phone-container {
     position: relative;
@@ -151,11 +155,13 @@ body {
     height: 100%;
     background: var(--background-color);
     display: none;
+    opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
 .screen.active {
     display: block;
+    opacity: 1;
 }
 
 /* Lock Screen */
