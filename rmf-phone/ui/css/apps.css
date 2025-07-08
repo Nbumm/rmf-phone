@@ -1,0 +1,909 @@
+/* RMF Phone - Apps CSS */
+
+/* General App Styles */
+.app-placeholder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-secondary);
+    font-size: 16px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: var(--text-primary);
+    font-size: 16px;
+}
+
+/* Dialer App */
+.dialer-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: var(--spacing-lg);
+}
+
+.dialer-display {
+    margin-bottom: var(--spacing-xl);
+}
+
+.dialer-display input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+    font-size: 24px;
+    text-align: center;
+    outline: none;
+}
+
+.dialer-keypad {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-xl);
+}
+
+.dialer-row {
+    display: flex;
+    gap: var(--spacing-md);
+    justify-content: center;
+}
+
+.dialer-key {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialer-key span {
+    font-size: 10px;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.dialer-key:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.dialer-actions {
+    display: flex;
+    justify-content: center;
+}
+
+.dialer-call-button {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #4CAF50, #45a049);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-2);
+}
+
+.dialer-call-button:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-3);
+}
+
+.dialer-call-button .material-icons {
+    font-size: 32px;
+}
+
+/* Messages App */
+.messages-app {
+    height: 100%;
+    position: relative;
+}
+
+.messages-list {
+    height: 100%;
+    overflow-y: auto;
+    padding: var(--spacing-md);
+}
+
+.message-thread {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.message-thread:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.thread-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+}
+
+.thread-info {
+    flex: 1;
+}
+
+.thread-name {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.thread-preview {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.thread-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.compose-button {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-3);
+    transition: all 0.2s ease;
+}
+
+.compose-button:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-4);
+}
+
+.compose-button .material-icons {
+    font-size: 24px;
+}
+
+/* Contacts App */
+.contacts-app {
+    height: 100%;
+    position: relative;
+}
+
+.contacts-search {
+    padding: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contacts-search input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    color: var(--text-primary);
+    outline: none;
+}
+
+.contacts-search input::placeholder {
+    color: var(--text-secondary);
+}
+
+.contacts-list {
+    height: calc(100% - 120px);
+    overflow-y: auto;
+    padding: var(--spacing-md);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.contact-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.contact-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+}
+
+.contact-info {
+    flex: 1;
+}
+
+.contact-name {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.contact-number {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.add-contact-button {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    right: var(--spacing-lg);
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+    box-shadow: var(--shadow-3);
+    transition: all 0.2s ease;
+}
+
+.add-contact-button:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-4);
+}
+
+.add-contact-button .material-icons {
+    font-size: 24px;
+}
+
+/* Camera App */
+.camera-app {
+    height: 100%;
+    background: #000;
+    position: relative;
+}
+
+.camera-viewfinder {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background: linear-gradient(135deg, #333, #111);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 48px;
+    color: var(--text-secondary);
+}
+
+.camera-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: var(--spacing-lg);
+}
+
+.camera-controls-top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.camera-controls-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.camera-flash, .camera-flip, .camera-gallery, .camera-capture, .camera-video {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.camera-capture {
+    width: 72px;
+    height: 72px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+}
+
+.camera-flash:hover, .camera-flip:hover, .camera-gallery:hover, .camera-capture:hover, .camera-video:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.camera-capture:hover {
+    background: rgba(255, 255, 255, 1);
+}
+
+/* Gallery App */
+.gallery-app {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+    padding: var(--spacing-sm);
+}
+
+.gallery-item {
+    aspect-ratio: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Settings App */
+.settings-app {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.settings-section {
+    margin-bottom: var(--spacing-lg);
+}
+
+.settings-header {
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-color);
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.settings-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.settings-item:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.settings-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+}
+
+.settings-info {
+    flex: 1;
+}
+
+.settings-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.settings-subtitle {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.settings-action {
+    color: var(--text-secondary);
+}
+
+.settings-toggle {
+    width: 48px;
+    height: 24px;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.3);
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.settings-toggle.active {
+    background: var(--primary-color);
+}
+
+.settings-toggle::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    transition: all 0.2s ease;
+}
+
+.settings-toggle.active::after {
+    transform: translateX(24px);
+}
+
+/* Calculator App */
+.calculator-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.calculator-display {
+    flex: 1;
+    padding: var(--spacing-lg);
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.calculator-result {
+    font-size: 48px;
+    color: var(--text-primary);
+    font-weight: 300;
+}
+
+.calculator-keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.calculator-key {
+    height: 80px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.calculator-key:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.calculator-key.operator {
+    background: var(--primary-color);
+    color: white;
+}
+
+.calculator-key.equals {
+    background: var(--accent-color);
+    color: white;
+}
+
+.calculator-key.clear {
+    background: var(--error-color);
+    color: white;
+}
+
+/* Notepad App */
+.notepad-app {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.notepad-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notepad-title {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    outline: none;
+}
+
+.notepad-title::placeholder {
+    color: var(--text-secondary);
+}
+
+.notepad-save {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notepad-save:hover {
+    background: var(--primary-dark);
+}
+
+.notepad-content {
+    flex: 1;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    font-family: inherit;
+    font-size: 16px;
+    line-height: 1.5;
+    outline: none;
+    resize: none;
+}
+
+.notepad-content::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Banking App */
+.banking-app {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.banking-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    padding: var(--spacing-xl);
+    color: white;
+    text-align: center;
+}
+
+.banking-balance {
+    font-size: 32px;
+    font-weight: 300;
+    margin-bottom: var(--spacing-sm);
+}
+
+.banking-account {
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.banking-actions {
+    display: flex;
+    padding: var(--spacing-md);
+    gap: var(--spacing-md);
+}
+
+.banking-action {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: var(--text-primary);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.banking-action:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.banking-transactions {
+    padding: var(--spacing-md);
+}
+
+.transaction-item {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+}
+
+.transaction-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+}
+
+.transaction-info {
+    flex: 1;
+}
+
+.transaction-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.transaction-date {
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.transaction-amount {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.transaction-amount.positive {
+    color: #4CAF50;
+}
+
+.transaction-amount.negative {
+    color: #f44336;
+}
+
+/* Social Media Apps (Birdy, Instapic, etc.) */
+.social-app {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.social-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.social-logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.social-post-button {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.social-post-button:hover {
+    background: var(--primary-dark);
+}
+
+.social-feed {
+    padding: var(--spacing-md);
+}
+
+.social-post {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+}
+
+.post-info {
+    flex: 1;
+}
+
+.post-username {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.post-time {
+    color: var(--text-secondary);
+    font-size: 12px;
+}
+
+.post-content {
+    padding: 0 var(--spacing-md) var(--spacing-md);
+    color: var(--text-primary);
+    line-height: 1.5;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    padding: var(--spacing-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    gap: var(--spacing-lg);
+}
+
+.post-action {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.post-action:hover {
+    color: var(--text-primary);
+}
+
+/* Notification Styles */
+.notification-item {
+    display: flex;
+    align-items: flex-start;
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.notification-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.notification-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.notification-title {
+    color: var(--text-primary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.notification-message {
+    color: var(--text-secondary);
+    font-size: 14px;
+    margin-bottom: var(--spacing-xs);
+    line-height: 1.4;
+}
+
+.notification-time {
+    color: var(--text-disabled);
+    font-size: 12px;
+}
+
+.lock-notification-item {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-md);
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    color: var(--text-primary);
+}
+
+.lock-notification-title {
+    font-weight: 500;
+    margin-bottom: var(--spacing-xs);
+}
+
+.lock-notification-message {
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* Animations */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 400px) {
+    .dialer-key {
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .calculator-key {
+        height: 60px;
+        font-size: 20px;
+    }
+    
+    .calculator-result {
+        font-size: 36px;
+    }
+}

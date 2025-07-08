@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RMF Phone</title>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Material Design Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/apps.css">
+    <link rel="stylesheet" href="css/animations.css">
+</head>
+<body>
+    <!-- Phone Container -->
+    <div id="phone-container">
+        <!-- Phone Frame -->
+        <div id="phone-frame">
+            <!-- Status Bar -->
+            <div id="status-bar">
+                <div class="status-left">
+                    <span id="time">12:00</span>
+                </div>
+                <div class="status-center">
+                    <div id="notch"></div>
+                </div>
+                <div class="status-right">
+                    <span class="material-icons" id="signal-icon">signal_cellular_4_bar</span>
+                    <span class="material-icons" id="wifi-icon">wifi</span>
+                    <span class="material-icons" id="battery-icon">battery_full</span>
+                    <span id="battery-percentage">100%</span>
+                </div>
+            </div>
+
+            <!-- Phone Screen -->
+            <div id="phone-screen">
+                <!-- Lock Screen -->
+                <div id="lock-screen" class="screen active">
+                    <div class="lock-background">
+                        <div class="lock-time">
+                            <div id="lock-time-display">12:00</div>
+                            <div id="lock-date-display">Monday, January 1</div>
+                        </div>
+                        
+                        <div class="lock-notifications" id="lock-notifications">
+                            <!-- Dynamic notifications will be inserted here -->
+                        </div>
+                        
+                        <div class="lock-controls">
+                            <div class="lock-shortcut" data-app="camera">
+                                <span class="material-icons">camera_alt</span>
+                            </div>
+                            <div class="unlock-button" id="unlock-button">
+                                <span class="material-icons">lock_open</span>
+                            </div>
+                            <div class="lock-shortcut" data-app="dialer">
+                                <span class="material-icons">phone</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PIN Screen -->
+                <div id="pin-screen" class="screen">
+                    <div class="pin-container">
+                        <h2>Enter PIN</h2>
+                        <div class="pin-dots">
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                            <div class="pin-dot"></div>
+                        </div>
+                        <div class="pin-keypad">
+                            <div class="pin-key" data-number="1">1</div>
+                            <div class="pin-key" data-number="2">2</div>
+                            <div class="pin-key" data-number="3">3</div>
+                            <div class="pin-key" data-number="4">4</div>
+                            <div class="pin-key" data-number="5">5</div>
+                            <div class="pin-key" data-number="6">6</div>
+                            <div class="pin-key" data-number="7">7</div>
+                            <div class="pin-key" data-number="8">8</div>
+                            <div class="pin-key" data-number="9">9</div>
+                            <div class="pin-key pin-key-empty"></div>
+                            <div class="pin-key" data-number="0">0</div>
+                            <div class="pin-key pin-key-backspace" data-action="backspace">
+                                <span class="material-icons">backspace</span>
+                            </div>
+                        </div>
+                        <div class="pin-forgot">
+                            <button id="forgot-pin">Forgot PIN?</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Home Screen -->
+                <div id="home-screen" class="screen">
+                    <div class="wallpaper" id="wallpaper"></div>
+                    
+                    <!-- Widget Area -->
+                    <div class="widget-area">
+                        <div class="weather-widget widget">
+                            <div class="weather-temp">22°</div>
+                            <div class="weather-desc">Sunny</div>
+                            <div class="weather-location">Los Santos</div>
+                        </div>
+                        
+                        <div class="search-widget widget">
+                            <div class="search-bar">
+                                <span class="material-icons">search</span>
+                                <input type="text" placeholder="Search apps, contacts...">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- App Grid -->
+                    <div class="app-grid" id="app-grid">
+                        <!-- Apps will be dynamically inserted here -->
+                    </div>
+
+                    <!-- Dock -->
+                    <div class="dock">
+                        <div class="dock-app" data-app="dialer">
+                            <div class="app-icon" style="background-color: #4CAF50;">
+                                <span class="material-icons">phone</span>
+                            </div>
+                        </div>
+                        <div class="dock-app" data-app="messages">
+                            <div class="app-icon" style="background-color: #2196F3;">
+                                <span class="material-icons">message</span>
+                            </div>
+                        </div>
+                        <div class="dock-app" data-app="camera">
+                            <div class="app-icon" style="background-color: #9C27B0;">
+                                <span class="material-icons">camera_alt</span>
+                            </div>
+                        </div>
+                        <div class="dock-app" data-app="settings">
+                            <div class="app-icon" style="background-color: #607D8B;">
+                                <span class="material-icons">settings</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- App Container -->
+                <div id="app-container" class="screen">
+                    <div class="app-header">
+                        <button class="back-button" id="back-button">
+                            <span class="material-icons">arrow_back</span>
+                        </button>
+                        <h1 id="app-title">App Name</h1>
+                        <div class="app-actions" id="app-actions">
+                            <!-- App-specific actions will be inserted here -->
+                        </div>
+                    </div>
+                    
+                    <div class="app-content" id="app-content">
+                        <!-- App content will be dynamically loaded here -->
+                    </div>
+                </div>
+
+                <!-- Incoming Call Screen -->
+                <div id="call-screen" class="screen">
+                    <div class="call-background">
+                        <div class="caller-info">
+                            <div class="caller-avatar" id="caller-avatar">
+                                <span class="material-icons">person</span>
+                            </div>
+                            <div class="caller-name" id="caller-name">Unknown</div>
+                            <div class="caller-number" id="caller-number">000-000-0000</div>
+                            <div class="call-status" id="call-status">Incoming call</div>
+                        </div>
+                        
+                        <div class="call-controls">
+                            <button class="call-button decline-call" id="decline-call">
+                                <span class="material-icons">call_end</span>
+                            </button>
+                            <button class="call-button answer-call" id="answer-call">
+                                <span class="material-icons">call</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Active Call Screen -->
+                <div id="active-call-screen" class="screen">
+                    <div class="active-call-background">
+                        <div class="active-caller-info">
+                            <div class="active-caller-avatar" id="active-caller-avatar">
+                                <span class="material-icons">person</span>
+                            </div>
+                            <div class="active-caller-name" id="active-caller-name">Unknown</div>
+                            <div class="active-call-duration" id="active-call-duration">00:00</div>
+                        </div>
+                        
+                        <div class="active-call-controls">
+                            <button class="active-call-button" id="mute-call">
+                                <span class="material-icons">mic</span>
+                            </button>
+                            <button class="active-call-button" id="speaker-call">
+                                <span class="material-icons">volume_up</span>
+                            </button>
+                            <button class="active-call-button end-call" id="end-call">
+                                <span class="material-icons">call_end</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notification Panel -->
+                <div id="notification-panel" class="panel">
+                    <div class="panel-header">
+                        <h3>Notifications</h3>
+                        <button id="clear-notifications">Clear all</button>
+                    </div>
+                    <div class="notification-list" id="notification-list">
+                        <!-- Notifications will be dynamically inserted here -->
+                    </div>
+                </div>
+
+                <!-- Quick Settings Panel -->
+                <div id="quick-settings-panel" class="panel">
+                    <div class="panel-header">
+                        <h3>Quick Settings</h3>
+                    </div>
+                    <div class="quick-settings-grid">
+                        <div class="quick-setting" data-setting="wifi">
+                            <span class="material-icons">wifi</span>
+                            <span>Wi-Fi</span>
+                        </div>
+                        <div class="quick-setting" data-setting="bluetooth">
+                            <span class="material-icons">bluetooth</span>
+                            <span>Bluetooth</span>
+                        </div>
+                        <div class="quick-setting" data-setting="airplane">
+                            <span class="material-icons">airplanemode_active</span>
+                            <span>Airplane</span>
+                        </div>
+                        <div class="quick-setting" data-setting="silent">
+                            <span class="material-icons">volume_off</span>
+                            <span>Silent</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Bar -->
+            <div id="navigation-bar">
+                <button class="nav-button" id="back-nav">
+                    <span class="material-icons">arrow_back</span>
+                </button>
+                <button class="nav-button" id="home-nav">
+                    <span class="material-icons">home</span>
+                </button>
+                <button class="nav-button" id="recent-nav">
+                    <span class="material-icons">view_list</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/main.js"></script>
+    <script src="js/phone.js"></script>
+    <script src="js/apps.js"></script>
+    <script src="js/notifications.js"></script>
+    <script src="js/utils.js"></script>
+</body>
+</html>
